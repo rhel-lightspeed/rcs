@@ -32,14 +32,14 @@ WORKDIR /app-root
 
 # Add explicit files and directories
 # (avoid accidental inclusion of local directories or env files or credentials)
-COPY runner.py requirements.txt ./
-
-RUN pip3.11 install --no-cache-dir -r requirements.txt
+COPY README.md LICENSE runner.py pyproject.toml ./
 
 COPY ols ./ols
 
 # this directory is checked by ecosystem-cert-preflight-checks task in Konflux
 COPY LICENSE /licenses/
+
+RUN pip3.11 install .
 
 # Run the application
 EXPOSE 8080
