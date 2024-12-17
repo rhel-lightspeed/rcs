@@ -75,7 +75,7 @@ jobs:
         if: steps.push.outcome == 'failure'
         with:
           image: ${{ steps.build_image.outputs.image }}
-          tags: ${{ steps.build_image.outputs.tags }}
+          tags: ${{ steps.build_image.outputs.tags }} latest
           registry: ${{ env.IMAGE_REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ github.token }}
